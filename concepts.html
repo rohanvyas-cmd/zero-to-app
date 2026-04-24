@@ -178,6 +178,50 @@
 
         <div class="tips-panel" style="margin-top: 36px;">
           <div class="tips-head">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <h3>GET vs POST: the two verbs of the web</h3>
+          </div>
+          <p class="http-lede">
+            When the frontend talks to the backend, every message is an HTTP request with a <em>verb</em>.
+            Think of the backend as a waiter at a restaurant, and your frontend as the customer sitting at the table.
+          </p>
+          <div class="http-grid">
+            <article class="http-card http-get">
+              <div class="http-tag">GET</div>
+              <h4>"Can I see it?"</h4>
+              <p class="http-analogy">
+                Like asking the waiter, "What's on the menu today?" Nothing changes in the kitchen.
+                You just want to look at something that already exists.
+              </p>
+              <div class="http-example">
+                <span class="http-example-label">In the wild</span>
+                Loading your inbox. Viewing a profile. Fetching today's weather. Opening any web page.
+              </div>
+            </article>
+            <article class="http-card http-post">
+              <div class="http-tag">POST</div>
+              <h4>"Please do this."</h4>
+              <p class="http-analogy">
+                Like telling the waiter, "I'll take the pasta." Something <em>new</em> happens:
+                the kitchen starts cooking, a new order exists, the world has changed.
+              </p>
+              <div class="http-example">
+                <span class="http-example-label">In the wild</span>
+                Submitting a form. Posting a comment. Paying for a subscription. Signing up.
+              </div>
+            </article>
+          </div>
+          <div class="http-rest">
+            <strong>Honorable mentions:</strong>
+            <span class="mono">PUT</span> replaces a whole thing ("change my whole order to a pizza"),
+            <span class="mono">PATCH</span> updates one field ("just swap the fries for salad"),
+            and <span class="mono">DELETE</span> removes it ("cancel my order"). But <span class="mono">GET</span>
+            and <span class="mono">POST</span> cover most of what you'll ever touch.
+          </div>
+        </div>
+
+        <div class="tips-panel" style="margin-top: 36px;">
+          <div class="tips-head">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             <h3>Bonus vocabulary you'll hear</h3>
           </div>
