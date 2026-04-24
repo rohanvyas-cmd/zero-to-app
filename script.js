@@ -1,4 +1,4 @@
-/* Zero to App — shared script */
+/* We're Basically Engineers Now: shared script */
 
 (function () {
   "use strict";
