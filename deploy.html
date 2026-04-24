@@ -34,6 +34,7 @@
           <a href="deploy.html" class="active"><span class="num">04</span> Deploy</a>
           <a href="workshop.html"><span class="num">05</span> Build App</a>
           <a href="resources.html"><span class="num">06</span> Resources</a>
+          <a href="fieldnotes.html"><span class="num">07</span> Field Notes</a>
         </nav>
         <a href="workshop.html" class="cta-nav">
           Next chapter
@@ -53,9 +54,10 @@
           <span class="now">Deployment tools</span>
         </div>
         <div class="chapter-counter">
-          <span>Chapter 04 of 06</span>
+          <span>Chapter 04 of 07</span>
           <span class="dots">
             <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span>
           </span>
         </div>
       </div>
@@ -139,6 +141,67 @@
             <div class="stack-pill stack-pill-violet">Vercel</div>
             <span class="stack-equals">=</span>
             <div class="stack-result">A real, production-ready app. No backend code required.</div>
+          </div>
+        </div>
+
+        <!-- The three phases of shipping -->
+        <div class="phase-block">
+          <div class="phase-head">
+            <div class="phase-eyebrow">The map</div>
+            <h3>The three phases of shipping</h3>
+            <p>
+              You don't start with Kubernetes. You graduate into it, if ever.
+              Here's the honest progression from laptop to production.
+            </p>
+          </div>
+
+          <div class="phase-grid">
+            <article class="phase-card phase-0">
+              <div class="phase-tag">Phase 0</div>
+              <h4>Local first</h4>
+              <p class="phase-lede">Everything on your laptop. The goal isn't to ship, it's to <em>understand</em>.</p>
+              <ul class="phase-list">
+                <li><span>Frontend</span><span class="mono">npm run dev</span></li>
+                <li><span>Backend</span><span class="mono">python app.py</span></li>
+                <li><span>Database</span><span class="mono">local Postgres / SQLite</span></li>
+              </ul>
+              <div class="phase-why">
+                <strong>Why:</strong> you see every piece with your own eyes before trusting a cloud to run it.
+              </div>
+            </article>
+
+            <article class="phase-card phase-1">
+              <div class="phase-tag">Phase 1</div>
+              <h4>Out-of-the-box cloud</h4>
+              <p class="phase-lede">Vercel + Railway + Supabase. Zero devops. One <span class="mono">git push</span> and it's live.</p>
+              <ul class="phase-list">
+                <li><span>Vercel</span><span class="mono">frontend</span></li>
+                <li><span>Railway</span><span class="mono">backend + cron</span></li>
+                <li><span>Supabase</span><span class="mono">db + auth + storage</span></li>
+              </ul>
+              <div class="phase-why">
+                <strong>Why:</strong> fastest path from idea to live URL. 95% of apps happily live here forever.
+              </div>
+            </article>
+
+            <article class="phase-card phase-2">
+              <div class="phase-tag">Phase 2</div>
+              <h4>Full cloud config</h4>
+              <p class="phase-lede">AWS or GCP. You handle the pipes. You unlock everything, you also own everything.</p>
+              <ul class="phase-list">
+                <li><span>Compute</span><span class="mono">EC2 / Cloud Run</span></li>
+                <li><span>Database</span><span class="mono">RDS / Cloud SQL</span></li>
+                <li><span>Storage + auth</span><span class="mono">S3 + IAM / GCS</span></li>
+              </ul>
+              <div class="phase-why">
+                <strong>Why:</strong> only when traffic, compliance, or cost forces the move. Not a day sooner.
+              </div>
+            </article>
+          </div>
+
+          <div class="phase-rule">
+            <strong>The rule:</strong> never skip a phase. Prove the concept on Phase 0,
+            ship it on Phase 1, and only touch Phase 2 when reality demands it.
           </div>
         </div>
 

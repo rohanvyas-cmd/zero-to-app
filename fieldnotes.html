@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="We're Basically Engineers Now · Chapter 07: Field notes from shipping an AI product in 48 hours. Routing, caching, prompts, memory, security." />
+    <title>Field Notes · We're Basically Engineers Now</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="fieldnotes">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <header class="topnav">
+      <div class="topnav-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">We're Basically Engineers Now</div>
+            <div class="brand-sub">Workshop · v1.0</div>
+          </div>
+        </a>
+        <nav class="primary-nav" id="primaryNav">
+          <a href="index.html"><span class="num">00</span> Welcome</a>
+          <a href="concepts.html"><span class="num">01</span> Concepts</a>
+          <a href="setup.html"><span class="num">02</span> Setup</a>
+          <a href="claude.html"><span class="num">03</span> Claude Code</a>
+          <a href="deploy.html"><span class="num">04</span> Deploy</a>
+          <a href="workshop.html"><span class="num">05</span> Build App</a>
+          <a href="resources.html"><span class="num">06</span> Resources</a>
+          <a href="fieldnotes.html" class="active"><span class="num">07</span> Field Notes</a>
+        </nav>
+        <a href="index.html" class="cta-nav">
+          Back to top
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6" transform="rotate(180 12 12)"/><polyline points="8 6 2 12 8 18" transform="rotate(180 12 12)"/></svg>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="chapter-ribbon">
+      <div class="chapter-ribbon-inner">
+        <div class="crumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <span class="now">Field notes</span>
+        </div>
+        <div class="chapter-counter">
+          <span>Chapter 07 of 07</span>
+          <span class="dots">
+            <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <main class="page">
+      <div class="container">
+        <div class="section-head fn-hero">
+          <div class="fn-giant-num" aria-hidden="true">10</div>
+          <div class="section-tag">Chapter 07 · Guest field notes</div>
+          <h1>
+            Ten lessons from shipping <span class="gradient-text">AI in 48 hours</span>.
+          </h1>
+          <p class="section-lede">
+            Built an end-to-end AI productivity tool in a hackathon. The biggest wins
+            weren't the framework or the UI. They were the system decisions underneath:
+            routing, caching, prompt order, memory, feedback, security.
+          </p>
+          <div class="fn-tags">
+            <span class="fn-tag">AI Systems</span>
+            <span class="fn-tag">Architecture</span>
+            <span class="fn-tag">Cost</span>
+            <span class="fn-tag">Memory</span>
+            <span class="fn-tag">Security</span>
+          </div>
+        </div>
+
+        <!-- 01 · Routing -->
+        <article class="fn-lesson">
+          <header class="fn-lesson-head">
+            <div class="fn-num">01</div>
+            <div>
+              <div class="fn-topic">Architecture · Routing</div>
+              <h2>Match each call to the task's real complexity.</h2>
+            </div>
+          </header>
+          <p class="fn-lede">
+            Of 8 Claude calls in the pipeline, half moved to Haiku the moment the task turned mechanical.
+            Don't default to Sonnet for everything. Use the right model for the right job.
+          </p>
+          <div class="fn-split">
+            <div class="fn-split-card fn-split-primary">
+              <div class="fn-split-tag">Sonnet · Creative</div>
+              <div class="fn-split-num">4<span class="fn-split-of">/8</span></div>
+              <div class="fn-split-chip">High judgment</div>
+              <p>Drafting, synthesis, anything that benefits from nuance.</p>
+            </div>
+            <div class="fn-split-card">
+              <div class="fn-split-tag">Haiku · Utility</div>
+              <div class="fn-split-num">4<span class="fn-split-of">/8</span></div>
+              <div class="fn-split-chip">Fast · Mechanical</div>
+              <p>Summarization, contradiction checks, pattern analysis.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 · Cost -->
+        <article class="fn-lesson">
+          <header class="fn-lesson-head">
+            <div class="fn-num">02</div>
+            <div>
+              <div class="fn-topic">Cost · Cheap calls</div>
+              <h2>Utility calls don't need the flagship.</h2>
+            </div>
+          </header>
+          <div class="fn-stat">
+            <div class="fn-stat-big">75<span class="fn-stat-unit">%</span></div>
+            <div class="fn-stat-body">
+              <div class="fn-stat-label">cheaper</div>
+              <p>Routing utility calls to Haiku cost 75% less, with no visible drop in output quality.
+              Sonnet for thinking, Haiku for checking.</p>
+            </div>
+          </div>
+          <div class="fn-chip-row">
+            <span class="fn-chip">Sonnet for thinking</span>
+            <span class="fn-chip">Haiku for checking</span>
+            <span class="fn-chip">75% cheaper</span>
+            <span class="fn-chip">Zero quality drop</span>
+          </div>
+        </article>
+
+        <!-- 03 · Preprocessing -->
+        <article class="fn-lesson">
+          <header class="fn-lesson-head">
+            <div class="fn-num">03</div>
+            <div>
+              <div class="fn-topic">Preprocessing · Funnel</div>
+              <h2>Filter aggressively before the model sees anything.</h2>
+            </div>
+          </header>
+          <p class="fn-lede">
+            Simple Python ranking and de-duplication reduced 3,500 signals to 50 before Claude saw
+            a single token. Pre-filtering is free. Inference isn't.
+          </p>
+          <div class="fn-funnel">
+            <div class="fn-funnel-row fn-funnel-top">
+              <div class="fn-funnel-num">3,500</div>
+              <div class="fn-funnel-text">raw signals entering the system</div>
+            </div>
+            <div class="fn-funnel-step">↓ &nbsp; TF-IDF ranking · pure Python · <strong>zero tokens</strong></div>
+            <div class="fn-funnel-row fn-funnel-mid">
+              <div class="fn-funnel-num">~400</div>
+              <div class="fn-funnel-text">filtered candidates</div>
+            </div>
+            <div class="fn-funnel-step">↓ &nbsp; de-dupe &amp; threshold</div>
+            <div class="fn-funnel-row fn-funnel-end">
+              <div class="fn-funnel-num">50</div>
+              <div class="fn-funnel-text">sent to Claude</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04 · Caching -->
+        <article class="fn-lesson">
+          <header class="fn-lesson-head">
+            <div class="fn-num">04</div>
+            <div>
+              <div class="fn-topic">Caching · Token economy</div>
+              <h2>Cache the parts of your prompt that don't change.</h2>
+            </div>
+          </header>
+          <div class="fn-stat">
+            <div class="fn-stat-big fn-stat-accent">90<span class="fn-stat-unit">%</span></div>
+            <div class="fn-stat-body">
+              <div class="fn-stat-label">cost drop on repeated input</div>
+              <p>
+                Guardrails, personality, system instructions: all stable across calls. Caching
+                these dropped repeated input cost by 90%. The biggest single cost win of the build.
+              </p>
+            </div>
+          </div>
+          <div class="fn-chip-row">
+            <span class="fn-chip">Guardrails cached</span>
+            <span class="fn-chip">Personality cached</span>
+            <span class="fn-chip">~90% cost drop</span>
+            <span class="fn-chip">Zero resends</span>
+          </div>
+        </article>
+
+        <!-- 05 · Prompt order -->
+        <article class="fn-lesson">
+          <header class="fn-lesson-head">
+            <div class="fn-num">05</div>
+            <div>
+              <div class="fn-topic">Prompt Order · Priority stack</div>
+              <h2>The sequence decides what gets overridden.</h2>
+            </div>
+          </header>
+          <p class="fn-lede">
+            Later parts of the prompt can override earlier ones. So put the non-negotiables first,
+            and the flavor last.
+          </p>
+          <div class="fn-stack">
+            <div class="fn-stack-row fn-stack-top">
+              <div class="fn-stack-prio">p1</div>
+              <div class="fn-stack-body">
+                <div class="fn-stack-name">Guardrails</div>
+                <div class="fn-stack-desc">Hard constraints. Never overridden.</div>
+              </div>
+              <div class="fn-stack-pos">TOP</div>
+            </div>
+            <div class="fn-stack-row">
+              <div class="fn-stack-prio">p2</div>
+              <div class="fn-stack-body">
+                <div class="fn-stack-name">Source content</div>
+                <div class="fn-stack-desc">The actual input being processed.</div>
+              </div>
+              <div class="fn-stack-pos">NEXT</div>
+            </div>
+            <div class="fn-stack-row">
+              <div class="fn-stack-prio">p3</div>
+              <div class="fn-stack-body">
+                <div class="fn-stack-name">Feedback learnings</div>
+                <div class="fn-stack-desc">Corrections from past runs.</div>
+              </div>
+              <div class="fn-stack-pos">NEXT</div>
+            </div>
+            <div class="fn-stack-row">
+              <div class="fn-stack-prio">p4</div>
+              <div class="fn-stack-body">
+                <div class="fn-stack-name">Personality</div>
+                <div class="fn-stack-desc">Tone and style. Last, so it can't override the rules above.</div>
+              </div>
+              <div class="fn-stack-pos">LAST</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 06 · Feedback -->
+        <article class="fn-lesson">
+          <header class="fn-lesson-head">
+            <div class="fn-num">06</div>
+            <div>
+              <div class="fn-topic">Feedback · The loop</div>
+              <h2>Capture each run as a snapshot. Inject it into the next.</h2>
+            </div>
+          </header>
+          <p class="fn-lede">
+            Snapshots stay minimal and token-budgeted: persistent enough to steer the next run,
+            small enough not to bloat the prompt.
+          </p>
+          <pre class="fn-code">
+<span class="fn-code-comment">// immutable snapshot · ≤ 800 chars</span>
+<span class="fn-code-key">rating</span>: 4
+<span class="fn-code-key">note</span>: <span class="fn-code-str">"too formal in opening; ex. 3 drifted off-topic"</span>
+<span class="fn-code-key">element_tags</span>: [tone, topicality, opener]</pre>
+          <div class="fn-loop">
+            <div class="fn-loop-step"><span class="fn-loop-label">Generate</span>Output</div>
+            <div class="fn-loop-arrow">→</div>
+            <div class="fn-loop-step"><span class="fn-loop-label">Capture</span>Snapshot</div>
+            <div class="fn-loop-arrow">→</div>
+            <div class="fn-loop-step"><span class="fn-loop-label">Inject</span>Next run</div>
+            <div class="fn-loop-arrow">↺</div>
+            <div class="fn-loop-step"><span class="fn-loop-label">Re-score</span>&amp; draft</div>
+          </div>
+        </article>
+
+        <!-- 07 · Memory -->
+        <article class="fn-lesson">
+          <header class="fn-lesson-head">
+            <div class="fn-num">07</div>
+            <div>
+              <div class="fn-topic">Memory · Layers</div>
+              <h2>Short-term for consistency, long-term for identity.</h2>
+            </div>
+          </header>
+          <div class="fn-mem-grid">
+            <article class="fn-mem-card">
+              <div class="fn-mem-tag">Short-term</div>
+              <h4>Consistency across recent outputs</h4>
+              <p>Prevents contradictions between adjacent drafts. Flushes often.</p>
+            </article>
+            <article class="fn-mem-card fn-mem-card-accent">
+              <div class="fn-mem-tag">Long-term</div>
+              <h4>Behavior updates over time</h4>
+              <p>Shapes identity and taste. Refines, never replaces. The system gets sharper over time, not different.</p>
+            </article>
+          </div>
+          <p class="fn-outro">
+            One horizon for the page in front of you, another for who the system is becoming.
+          </p>
+        </article>
+
+        <!-- 08–10 · Three more -->
+        <article class="fn-lesson fn-lesson-triple">
+          <header class="fn-lesson-head">
+            <div class="fn-num fn-num-range">08–10</div>
+            <div>
+              <div class="fn-topic">Systems · Review · Humans</div>
+              <h2>Three more things that mattered.</h2>
+            </div>
+          </header>
+          <div class="fn-triple">
+            <div class="fn-triple-row">
+              <div class="fn-triple-num">08</div>
+              <div>
+                <h4>Security is a backend decision.</h4>
+                <p>Secrets in <span class="mono">.env</span> on the server. API keys never touched the frontend. OAuth stayed server-side. Client code never saw credentials.</p>
+              </div>
+            </div>
+            <div class="fn-triple-row">
+              <div class="fn-triple-num">09</div>
+              <div>
+                <h4>AI review only works with narrow asks.</h4>
+                <p><span class="mono">"review this code"</span> produced vague output. Specific asks (find leaks, dead code, inconsistencies) produced fixes I actually used.</p>
+              </div>
+            </div>
+            <div class="fn-triple-row">
+              <div class="fn-triple-num">10</div>
+              <div>
+                <h4>Human review creates the real product.</h4>
+                <p>The useful flow: <span class="mono">extract → validate → score → human review</span>. AI did most of the work. Final judgment stayed fast and manual.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Closing -->
+        <div class="fn-closing">
+          <div class="fn-closing-eyebrow">Closing thought · 10 / 10</div>
+          <div class="fn-closing-body">
+            The best AI systems aren't <span class="fn-closing-strike">prompt hacks</span>.
+            They're tightly designed <span class="gradient-text">workflows</span>,
+            with cost, memory, feedback, and security built in.
+          </div>
+          <div class="fn-closing-chips">
+            <span class="fn-closing-chip">Cost</span>
+            <span class="fn-closing-chip">Memory</span>
+            <span class="fn-closing-chip">Feedback</span>
+            <span class="fn-closing-chip">Security</span>
+          </div>
+        </div>
+
+        <div class="fn-credit">
+          <div class="fn-credit-label">Field notes contributed by</div>
+          <div class="fn-credit-name">Abhimanyu Shekhawat</div>
+          <a class="fn-credit-link" href="https://linkedin.com/in/abhimanyushekhawat" target="_blank" rel="noopener">
+            linkedin.com/in/abhimanyushekhawat
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <div class="page-nav">
+      <a class="page-nav-link prev" href="resources.html">
+        <span class="pn-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Previous
+        </span>
+        <span class="pn-title">06 · Resources &amp; cheatsheet</span>
+      </a>
+      <a class="page-nav-link next" href="index.html">
+        <span class="pn-label">
+          You finished the whole thing!
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span class="pn-title">Back to the start</span>
+      </a>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-row">
+          <div class="brand">
+            <div class="brand-mark">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="brand-text">
+              <div class="brand-title">We're Basically Engineers Now</div>
+              <div class="brand-sub">A workshop for humans who ship</div>
+            </div>
+          </div>
+          <div class="footer-meta-line">Built with care · No cookies · No tracking</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

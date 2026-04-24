@@ -34,6 +34,7 @@
           <a href="deploy.html"><span class="num">04</span> Deploy</a>
           <a href="workshop.html"><span class="num">05</span> Build App</a>
           <a href="resources.html"><span class="num">06</span> Resources</a>
+          <a href="fieldnotes.html"><span class="num">07</span> Field Notes</a>
         </nav>
         <a href="deploy.html" class="cta-nav">
           Next chapter
@@ -53,9 +54,10 @@
           <span class="now">Claude Code setup</span>
         </div>
         <div class="chapter-counter">
-          <span>Chapter 03 of 06</span>
+          <span>Chapter 03 of 07</span>
           <span class="dots">
             <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span>
           </span>
         </div>
       </div>
@@ -122,7 +124,80 @@ claude</code></pre>
           </div>
         </div>
 
-        <div class="tips-panel">
+        <!-- Spec-first workflow -->
+        <div class="spec-panel">
+          <div class="spec-head">
+            <div class="spec-eyebrow">Level up · the real workflow</div>
+            <h3>Spec-first building</h3>
+            <p>
+              For anything bigger than "change the button color", don't jump straight into chat.
+              Write the spec first, then point Claude at it. Three tiny markdown files, in this order:
+            </p>
+          </div>
+
+          <div class="spec-steps">
+            <article class="spec-step">
+              <div class="spec-num">1</div>
+              <div class="spec-body">
+                <div class="spec-file">requirements.md</div>
+                <div class="spec-what">What are you building, and why?</div>
+                <p>The user problem, the user stories, what "done" looks like. Keep it to one page.</p>
+                <pre class="spec-snippet"># Mood journal
+As a user I want to log how I'm feeling daily
+so I can spot patterns over a week.
+
+Success: I use it 7 days in a row without forgetting.</pre>
+              </div>
+            </article>
+
+            <div class="spec-arrow" aria-hidden="true">↓</div>
+
+            <article class="spec-step">
+              <div class="spec-num">2</div>
+              <div class="spec-body">
+                <div class="spec-file">design.md</div>
+                <div class="spec-what">How is it going to work?</div>
+                <p>Data model, screens, libraries, key architectural decisions. Still one page.</p>
+                <pre class="spec-snippet">- Entry: { id, mood, note, timestamp }
+- Storage: localStorage (single user, client-only)
+- Screens: today, history, settings
+- Charts: Chart.js</pre>
+              </div>
+            </article>
+
+            <div class="spec-arrow" aria-hidden="true">↓</div>
+
+            <article class="spec-step">
+              <div class="spec-num">3</div>
+              <div class="spec-body">
+                <div class="spec-file">tasks.md</div>
+                <div class="spec-what">What's the step-by-step?</div>
+                <p>Break the build into atomic tasks. Each one should be testable on its own.</p>
+                <pre class="spec-snippet">[ ] 1. Scaffold routes (today, history, settings)
+[ ] 2. Build the daily entry form
+[ ] 3. Wire up localStorage
+[ ] 4. Build the history chart
+[ ] 5. Add settings + clear-data button</pre>
+              </div>
+            </article>
+
+            <div class="spec-arrow" aria-hidden="true">↓</div>
+
+            <div class="spec-final">
+              <div class="spec-final-avatar">C</div>
+              <div class="spec-final-body">
+                <div class="spec-final-label">Now say this to Claude</div>
+                <div class="spec-final-cmd">"Read requirements.md, design.md, and tasks.md. Start with task 1. Show me what you built, then wait for me to say 'next' before moving on."</div>
+                <p>
+                  Claude works one checkbox at a time. You get atomic commits, you test after each step,
+                  and if it ever goes sideways you know exactly which task broke it.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tips-panel" style="margin-top: 36px;">
           <div class="tips-head">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg>
             <h3>Vibe-coding: how to prompt like a pro</h3>
