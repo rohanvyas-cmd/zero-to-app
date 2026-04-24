@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Zero to App · Chapter 05 — The hands-on workshop. Build and ship a React app." />
+    <title>Build Your First App · Zero to App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="workshop">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <header class="topnav">
+      <div class="topnav-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">Zero to App</div>
+            <div class="brand-sub">Workshop · v1.0</div>
+          </div>
+        </a>
+        <nav class="primary-nav" id="primaryNav">
+          <a href="index.html"><span class="num">00</span> Welcome</a>
+          <a href="concepts.html"><span class="num">01</span> Concepts</a>
+          <a href="setup.html"><span class="num">02</span> Setup</a>
+          <a href="claude.html"><span class="num">03</span> Claude Code</a>
+          <a href="deploy.html"><span class="num">04</span> Deploy</a>
+          <a href="workshop.html" class="active"><span class="num">05</span> Build App</a>
+          <a href="resources.html"><span class="num">06</span> Resources</a>
+        </nav>
+        <a href="resources.html" class="cta-nav">
+          Next chapter
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="chapter-ribbon">
+      <div class="chapter-ribbon-inner">
+        <div class="crumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <span class="now">Build your first app</span>
+        </div>
+        <div class="chapter-counter">
+          <span>Chapter 05 of 06</span>
+          <span class="dots">
+            <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <main class="page">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-tag">Chapter 05</div>
+          <h1>Build your first app.</h1>
+          <p class="section-lede">
+            Time to make it real. In the next ~30 minutes you'll create a React app,
+            add a feature with Claude Code, push it to GitHub, and deploy it to a
+            live URL. Follow along in your terminal.
+          </p>
+        </div>
+
+        <div class="workshop-steps">
+          <div class="w-step">
+            <div class="w-num">1</div>
+            <div class="w-body">
+              <h3>Scaffold a Vite React app</h3>
+              <p>From any folder you want to keep projects in.</p>
+              <div class="code-block">
+                <div class="code-head">
+                  <span class="code-lang">Terminal</span>
+                  <button class="copy-btn" data-copy>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copy</span>
+                  </button>
+                </div>
+<pre><code class="language-bash">cd ~/Desktop
+npm create vite@latest zero-to-app -- --template react
+cd zero-to-app
+npm install</code></pre>
+              </div>
+              <div class="callout callout-success">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <div>You should see a <span class="mono">zero-to-app</span> folder on your Desktop.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-step">
+            <div class="w-num">2</div>
+            <div class="w-body">
+              <h3>Open it in VS Code</h3>
+              <p>From the same terminal.</p>
+              <div class="code-block">
+                <div class="code-head">
+                  <span class="code-lang">Terminal</span>
+                  <button class="copy-btn" data-copy>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copy</span>
+                  </button>
+                </div>
+<pre><code class="language-bash">code .</code></pre>
+              </div>
+              <div class="callout callout-info">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <div>If <span class="mono">code</span> isn't found, open VS Code → ⌘⇧P → "Shell Command: Install 'code' command in PATH".</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-step">
+            <div class="w-num">3</div>
+            <div class="w-body">
+              <h3>Run the dev server</h3>
+              <p>Open a new terminal inside VS Code (⌃ + `) and start it.</p>
+              <div class="code-block">
+                <div class="code-head">
+                  <span class="code-lang">Terminal</span>
+                  <button class="copy-btn" data-copy>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copy</span>
+                  </button>
+                </div>
+<pre><code class="language-bash">npm run dev</code></pre>
+              </div>
+              <div class="callout callout-success">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <div>Open <span class="mono">http://localhost:5173</span>. You should see the default Vite + React page.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-step">
+            <div class="w-num">4</div>
+            <div class="w-body">
+              <h3>Add a feature with Claude Code</h3>
+              <p>In a second terminal, fire up Claude and ask for something fun.</p>
+              <div class="code-block">
+                <div class="code-head">
+                  <span class="code-lang">Terminal</span>
+                  <button class="copy-btn" data-copy>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copy</span>
+                  </button>
+                </div>
+<pre><code class="language-bash">claude</code></pre>
+              </div>
+              <div class="prompt-mock">
+                <div class="prompt-mock-label">Try this prompt</div>
+                <div class="prompt-mock-body">
+                  Replace the default landing page with a simple "mood journal": a text
+                  area, a save button, and a list of saved moods. Store them in
+                  localStorage so they persist. Make it look clean and modern.
+                </div>
+              </div>
+              <div class="callout callout-success">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <div>Your browser should auto-refresh with your new mood journal.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-step">
+            <div class="w-num">5</div>
+            <div class="w-body">
+              <h3>Push to GitHub</h3>
+              <p>One command, thanks to the <span class="mono">gh</span> CLI you installed in Chapter 02.</p>
+              <div class="code-block">
+                <div class="code-head">
+                  <span class="code-lang">Terminal</span>
+                  <button class="copy-btn" data-copy>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copy</span>
+                  </button>
+                </div>
+<pre><code class="language-bash">git init
+git add .
+git commit -m "first ship"
+gh repo create zero-to-app --public --source=. --push</code></pre>
+              </div>
+              <div class="callout callout-info">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <div>Prefer the manual way? Create an empty repo at <a href="https://github.com/new" target="_blank" rel="noopener">github.com/new</a> and run <span class="mono">git remote add origin &lt;url&gt;</span> then <span class="mono">git push -u origin main</span>.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-step">
+            <div class="w-num">6</div>
+            <div class="w-body">
+              <h3>Deploy to Vercel</h3>
+              <ol class="ol-steps">
+                <li>Go to <a href="https://vercel.com/new" target="_blank" rel="noopener">vercel.com/new</a>.</li>
+                <li>Sign in with GitHub, click "Import" on your new repo.</li>
+                <li>Accept all defaults (Vercel auto-detects Vite).</li>
+                <li>Click <strong>Deploy</strong>.</li>
+              </ol>
+              <div class="callout callout-celebrate">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <div>
+                  <strong>You just shipped your first app.</strong>
+                  Vercel gave you a live URL like <span class="mono">zero-to-app.vercel.app</span>.
+                  Text it to someone right now.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-step">
+            <div class="w-num">7</div>
+            <div class="w-body">
+              <h3>Ship again (the real superpower)</h3>
+              <p>Tweak the app with Claude, then push. Vercel redeploys automatically.</p>
+              <div class="code-block">
+                <div class="code-head">
+                  <span class="code-lang">Terminal</span>
+                  <button class="copy-btn" data-copy>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    <span>Copy</span>
+                  </button>
+                </div>
+<pre><code class="language-bash">git add .
+git commit -m "added dark mode"
+git push</code></pre>
+              </div>
+              <div class="callout callout-success">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <div>Watch Vercel's dashboard — a new deploy starts within seconds. This is your workflow forever now.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="page-nav">
+      <a class="page-nav-link prev" href="deploy.html">
+        <span class="pn-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Previous
+        </span>
+        <span class="pn-title">04 · Deployment tools</span>
+      </a>
+      <a class="page-nav-link next" href="resources.html">
+        <span class="pn-label">
+          Up next
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+        <span class="pn-title">06 · Resources & cheatsheet</span>
+      </a>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-row">
+          <div class="brand">
+            <div class="brand-mark">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="brand-text">
+              <div class="brand-title">Zero to App</div>
+              <div class="brand-sub">A workshop for humans who ship</div>
+            </div>
+          </div>
+          <div class="footer-meta-line">Built with care · No cookies · No tracking</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

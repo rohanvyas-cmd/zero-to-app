@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Zero to App — a workshop for non-technical team members learning to build and deploy AI-powered apps from scratch."
+    />
+    <title>Zero to App · A workshop for non-devs</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="welcome">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- ==========  TOP NAV  ========== -->
+    <header class="topnav">
+      <div class="topnav-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">Zero to App</div>
+            <div class="brand-sub">Workshop · v1.0</div>
+          </div>
+        </a>
+
+        <nav class="primary-nav" id="primaryNav">
+          <a href="index.html" class="active"><span class="num">00</span> Welcome</a>
+          <a href="concepts.html"><span class="num">01</span> Concepts</a>
+          <a href="setup.html"><span class="num">02</span> Setup</a>
+          <a href="claude.html"><span class="num">03</span> Claude Code</a>
+          <a href="deploy.html"><span class="num">04</span> Deploy</a>
+          <a href="workshop.html"><span class="num">05</span> Build App</a>
+          <a href="resources.html"><span class="num">06</span> Resources</a>
+        </nav>
+
+        <a href="concepts.html" class="cta-nav">
+          Start workshop
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ==========  HERO  ========== -->
+    <section class="page-hero">
+      <div class="hero-bg"></div>
+      <div class="container">
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          A hands-on workshop · No prior code required
+        </div>
+        <h1>
+          Go from <span class="gradient-text">zero to shipping</span><br />
+          your first AI-powered app.
+        </h1>
+        <p class="page-sub">
+          A friendly, opinionated crash course for product people, designers, PMs, analysts —
+          anyone who has ideas but has never touched a terminal. By the end, you'll have
+          built and deployed a real app on the internet.
+        </p>
+
+        <div class="hero-cta">
+          <a href="concepts.html" class="btn btn-primary">
+            Start the workshop
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="workshop.html" class="btn btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Jump to build
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num">~2 hrs</div>
+            <div class="stat-label">Total time</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">7 pages</div>
+            <div class="stat-label">From install to deploy</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">0 → 1</div>
+            <div class="stat-label">Apps shipped</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">No bullshit</div>
+          </div>
+        </div>
+
+        <!-- roadmap -->
+        <div class="roadmap">
+          <div class="roadmap-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+            Your journey
+          </div>
+          <ol class="roadmap-list">
+            <li>
+              <span class="roadmap-num">01</span>
+              <div>
+                <strong>Learn the vocabulary</strong>
+                <p>Frontend, backend, database — what each one does, in plain English.</p>
+              </div>
+            </li>
+            <li>
+              <span class="roadmap-num">02</span>
+              <div>
+                <strong>Set up your machine</strong>
+                <p>Install the tools real engineers use — plus Git & GitHub — in under 30 minutes.</p>
+              </div>
+            </li>
+            <li>
+              <span class="roadmap-num">03</span>
+              <div>
+                <strong>Meet Claude Code</strong>
+                <p>Your AI pair programmer. Learn how to talk to it like a human.</p>
+              </div>
+            </li>
+            <li>
+              <span class="roadmap-num">04</span>
+              <div>
+                <strong>Understand deployment</strong>
+                <p>Vercel, Railway, Supabase — when to use each.</p>
+              </div>
+            </li>
+            <li>
+              <span class="roadmap-num">05</span>
+              <div>
+                <strong>Build & ship a real app</strong>
+                <p>From blank folder → live URL you can text to friends.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========  PAGE NAV  ========== -->
+    <div class="page-nav">
+      <a class="page-nav-link empty" href="#">
+        <span class="pn-label">Start here</span>
+        <span class="pn-title">You're on the first page</span>
+      </a>
+      <a class="page-nav-link next" href="concepts.html">
+        <span class="pn-label">
+          Up next
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+        <span class="pn-title">01 · Concepts first</span>
+      </a>
+    </div>
+
+    <!-- ==========  FOOTER  ========== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-row">
+          <div class="brand">
+            <div class="brand-mark">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="brand-text">
+              <div class="brand-title">Zero to App</div>
+              <div class="brand-sub">A workshop for humans who ship</div>
+            </div>
+          </div>
+          <div class="footer-meta-line">Built with care · No cookies · No tracking</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

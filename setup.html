@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Zero to App · Chapter 02 — Install Homebrew, Git, GitHub, Python, Node, Java, Vite, and VS Code." />
+    <title>Setting Up Your Machine · Zero to App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="setup">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <header class="topnav">
+      <div class="topnav-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">Zero to App</div>
+            <div class="brand-sub">Workshop · v1.0</div>
+          </div>
+        </a>
+        <nav class="primary-nav" id="primaryNav">
+          <a href="index.html"><span class="num">00</span> Welcome</a>
+          <a href="concepts.html"><span class="num">01</span> Concepts</a>
+          <a href="setup.html" class="active"><span class="num">02</span> Setup</a>
+          <a href="claude.html"><span class="num">03</span> Claude Code</a>
+          <a href="deploy.html"><span class="num">04</span> Deploy</a>
+          <a href="workshop.html"><span class="num">05</span> Build App</a>
+          <a href="resources.html"><span class="num">06</span> Resources</a>
+        </nav>
+        <a href="claude.html" class="cta-nav">
+          Next chapter
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="chapter-ribbon">
+      <div class="chapter-ribbon-inner">
+        <div class="crumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <span class="now">Setting up your machine</span>
+        </div>
+        <div class="chapter-counter">
+          <span>Chapter 02 of 06</span>
+          <span class="dots">
+            <span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <main class="page">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-tag">Chapter 02</div>
+          <h1>Setting up your machine.</h1>
+          <p class="section-lede">
+            Copy, paste, press enter. Each tool below is one line of terminal magic.
+            You'll use Mac's built-in <strong>Terminal</strong> app — just open Spotlight
+            (⌘ + space) and type "terminal".
+          </p>
+        </div>
+
+        <!-- 01 · Homebrew -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <div class="tool-number">01</div>
+            <div>
+              <h3>Homebrew</h3>
+              <p class="tool-what"><strong>What:</strong> The package manager for macOS.</p>
+              <p class="tool-why"><strong>Why:</strong> Installs everything else in this list with one command.</p>
+            </div>
+            <div class="tool-os"><span class="os-pill">macOS</span></div>
+          </div>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal · install</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal · verify</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">brew --version</code></pre>
+          </div>
+          <div class="callout callout-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div>
+              <strong>Windows user?</strong> Use <a href="https://chocolatey.org/install" target="_blank" rel="noopener">Chocolatey</a> or install
+              <a href="https://learn.microsoft.com/en-us/windows/wsl/install" target="_blank" rel="noopener">WSL</a> and follow Linux instructions. Everything after Homebrew works the same.
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 · Git -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <div class="tool-number">02</div>
+            <div>
+              <h3>Git</h3>
+              <p class="tool-what"><strong>What:</strong> The version-control system that tracks every change to your code.</p>
+              <p class="tool-why"><strong>Why:</strong> It's how you save snapshots, undo mistakes, and collaborate — and it's what GitHub is built on.</p>
+            </div>
+          </div>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal · install</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">brew install git
+git --version</code></pre>
+          </div>
+
+          <div class="substep-title">Tell Git who you are</div>
+          <p style="font-size: 14px; margin-top:0;">Every commit you make gets signed with these. Use your real name and the email tied to your GitHub account.</p>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global init.defaultBranch main</code></pre>
+          </div>
+          <div class="callout callout-success">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>Run <span class="mono">git config --global --list</span> to double-check your identity is set correctly.</div>
+          </div>
+        </div>
+
+        <!-- 03 · GitHub -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <div class="tool-number">03</div>
+            <div>
+              <h3>GitHub</h3>
+              <p class="tool-what"><strong>What:</strong> Cloud storage and collaboration for Git repositories.</p>
+              <p class="tool-why"><strong>Why:</strong> Every deploy platform (Vercel, Railway) reads from GitHub. Your code lives here.</p>
+            </div>
+          </div>
+
+          <div class="substep-title">Step A · Create a free account</div>
+          <div class="split-row">
+            <div class="code-block" style="flex:1">
+              <div class="code-head">
+                <span class="code-lang">Open in browser</span>
+              </div>
+<pre><code class="language-bash"># Sign up with the same email you gave Git above
+open https://github.com/signup</code></pre>
+            </div>
+            <div class="download-card">
+              <div class="download-title">Or go directly</div>
+              <a href="https://github.com/signup" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+                github.com/signup
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="substep-title">Step B · Install the GitHub CLI</div>
+          <p style="font-size: 14px; margin-top:0;">
+            The <span class="mono">gh</span> command lets you create repos, open PRs, and log in — all from the terminal.
+          </p>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">brew install gh
+gh --version</code></pre>
+          </div>
+
+          <div class="substep-title">Step C · Authenticate once, forever</div>
+          <p style="font-size: 14px; margin-top:0;">
+            Walks you through logging in via your browser and sets up SSH keys automatically — no more typing passwords on <span class="mono">git push</span>.
+          </p>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">gh auth login</code></pre>
+          </div>
+          <div class="callout callout-info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div>
+              Pick: <span class="mono">GitHub.com</span> → <span class="mono">HTTPS</span> →
+              <span class="mono">Yes, authenticate Git</span> →
+              <span class="mono">Login with a web browser</span>. Paste the one-time code, confirm, done.
+            </div>
+          </div>
+
+          <div class="substep-title">Step D · Your first repo (one command)</div>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">mkdir hello-world && cd hello-world
+echo "# hello-world" > README.md
+git init
+git add README.md
+git commit -m "first commit"
+gh repo create hello-world --public --source=. --push</code></pre>
+          </div>
+          <div class="callout callout-success">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>Open <span class="mono">https://github.com/&lt;your-username&gt;/hello-world</span> — your code is live on the internet.</div>
+          </div>
+        </div>
+
+        <!-- 04 · Python -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <div class="tool-number">04</div>
+            <div>
+              <h3>Python</h3>
+              <p class="tool-what"><strong>What:</strong> A programming language beloved by AI and data folks.</p>
+              <p class="tool-why"><strong>Why:</strong> Most AI libraries and scripts you'll touch are Python-first.</p>
+            </div>
+          </div>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">brew install python@3.12
+python3 --version</code></pre>
+          </div>
+        </div>
+
+        <!-- 05 · Node -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <div class="tool-number">05</div>
+            <div>
+              <h3>Node.js + npm</h3>
+              <p class="tool-what"><strong>What:</strong> JavaScript that runs outside the browser, plus its package installer.</p>
+              <p class="tool-why"><strong>Why:</strong> Every modern frontend tool (Vite, React, Claude Code) runs on it.</p>
+            </div>
+          </div>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal · nvm (recommended)</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install --lts
+node -v && npm -v</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal · brew (quicker)</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">brew install node</code></pre>
+          </div>
+        </div>
+
+        <!-- 06 · Java -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <div class="tool-number">06</div>
+            <div>
+              <h3>Java</h3>
+              <p class="tool-what"><strong>What:</strong> A battle-tested language and runtime.</p>
+              <p class="tool-why"><strong>Why:</strong> Some backend frameworks and enterprise tools still need it installed.</p>
+            </div>
+          </div>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">brew install openjdk@21
+java --version</code></pre>
+          </div>
+        </div>
+
+        <!-- 07 · Vite -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <div class="tool-number">07</div>
+            <div>
+              <h3>Vite</h3>
+              <p class="tool-what"><strong>What:</strong> The blazing-fast scaffolder that creates modern web apps.</p>
+              <p class="tool-why"><strong>Why:</strong> We'll use it in Chapter 05 to spin up a React app in 10 seconds.</p>
+            </div>
+          </div>
+          <div class="code-block">
+            <div class="code-head">
+              <span class="code-lang">Terminal</span>
+              <button class="copy-btn" data-copy>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+<pre><code class="language-bash">npm create vite@latest my-first-app -- --template react
+cd my-first-app
+npm install
+npm run dev</code></pre>
+          </div>
+          <div class="callout callout-success">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div>Visit <span class="mono">http://localhost:5173</span> — you should see a spinning Vite logo. Congrats, you're running a React app.</div>
+          </div>
+        </div>
+
+        <!-- 08 · VS Code -->
+        <div class="tool-block">
+          <div class="tool-head">
+            <div class="tool-number">08</div>
+            <div>
+              <h3>VS Code</h3>
+              <p class="tool-what"><strong>What:</strong> The editor where code lives and breathes.</p>
+              <p class="tool-why"><strong>Why:</strong> It's free, beautiful, and has the best AI extensions.</p>
+            </div>
+          </div>
+          <div class="split-row">
+            <div class="code-block" style="flex:1">
+              <div class="code-head">
+                <span class="code-lang">Install via brew</span>
+                <button class="copy-btn" data-copy>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+<pre><code class="language-bash">brew install --cask visual-studio-code</code></pre>
+            </div>
+            <div class="download-card">
+              <div class="download-title">Or download</div>
+              <a href="https://code.visualstudio.com" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+                code.visualstudio.com
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="ext-title">Recommended extensions</div>
+          <div class="ext-grid">
+            <div class="ext-card">
+              <div class="ext-name">Prettier</div>
+              <div class="ext-desc">Auto-formats code so it looks professional.</div>
+            </div>
+            <div class="ext-card">
+              <div class="ext-name">ESLint</div>
+              <div class="ext-desc">Catches bugs before you run the code.</div>
+            </div>
+            <div class="ext-card">
+              <div class="ext-name">GitLens</div>
+              <div class="ext-desc">Shows who wrote each line and why.</div>
+            </div>
+            <div class="ext-card ext-card-featured">
+              <div class="ext-name">Claude Dev <span class="ext-badge">★</span></div>
+              <div class="ext-desc">AI pair programmer, right inside the editor.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-celebrate" style="margin-top: 36px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <div>
+            <strong>You've got a real developer machine now.</strong>
+            Next up: let's introduce you to your new favorite coworker — Claude Code.
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="page-nav">
+      <a class="page-nav-link prev" href="concepts.html">
+        <span class="pn-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Previous
+        </span>
+        <span class="pn-title">01 · Concepts first</span>
+      </a>
+      <a class="page-nav-link next" href="claude.html">
+        <span class="pn-label">
+          Up next
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+        <span class="pn-title">03 · Claude Code setup</span>
+      </a>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-row">
+          <div class="brand">
+            <div class="brand-mark">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="brand-text">
+              <div class="brand-title">Zero to App</div>
+              <div class="brand-sub">A workshop for humans who ship</div>
+            </div>
+          </div>
+          <div class="footer-meta-line">Built with care · No cookies · No tracking</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

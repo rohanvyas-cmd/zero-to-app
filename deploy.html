@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Zero to App · Chapter 04 — Deployment tools: Vercel, Railway, and Supabase." />
+    <title>Deployment Tools · Zero to App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="deploy">
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <header class="topnav">
+      <div class="topnav-inner">
+        <a class="brand" href="index.html">
+          <div class="brand-mark">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="brand-text">
+            <div class="brand-title">Zero to App</div>
+            <div class="brand-sub">Workshop · v1.0</div>
+          </div>
+        </a>
+        <nav class="primary-nav" id="primaryNav">
+          <a href="index.html"><span class="num">00</span> Welcome</a>
+          <a href="concepts.html"><span class="num">01</span> Concepts</a>
+          <a href="setup.html"><span class="num">02</span> Setup</a>
+          <a href="claude.html"><span class="num">03</span> Claude Code</a>
+          <a href="deploy.html" class="active"><span class="num">04</span> Deploy</a>
+          <a href="workshop.html"><span class="num">05</span> Build App</a>
+          <a href="resources.html"><span class="num">06</span> Resources</a>
+        </nav>
+        <a href="workshop.html" class="cta-nav">
+          Next chapter
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="chapter-ribbon">
+      <div class="chapter-ribbon-inner">
+        <div class="crumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <span class="now">Deployment tools</span>
+        </div>
+        <div class="chapter-counter">
+          <span>Chapter 04 of 06</span>
+          <span class="dots">
+            <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <main class="page">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-tag">Chapter 04</div>
+          <h1>Deployment tools, decoded.</h1>
+          <p class="section-lede">
+            Writing code on your laptop is step one. Getting a real URL that friends,
+            customers, and investors can open is <em>shipping.</em> Here are the three
+            platforms that make shipping embarrassingly easy.
+          </p>
+        </div>
+
+        <div class="deploy-grid">
+          <article class="deploy-card deploy-vercel">
+            <div class="deploy-logo">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12 2 2 20h20L12 2z"/></svg>
+            </div>
+            <h3>Vercel</h3>
+            <p class="deploy-tag">Frontend · one-click deploys</p>
+            <p>Connect your GitHub repo, push code, and Vercel builds and ships a live URL in under 60 seconds. Perfect for anything Vite, React, or Next.js.</p>
+            <div class="deploy-when">
+              <div class="deploy-when-label">Use it when</div>
+              <div>You have a frontend (React, Vue, etc.) and want it live on the internet without thinking about servers.</div>
+            </div>
+            <div class="deploy-how">
+              <div class="step">①<span>Push code to GitHub</span></div>
+              <div class="step">②<span>Click "Import" on Vercel</span></div>
+              <div class="step">③<span>Ship.</span></div>
+            </div>
+          </article>
+
+          <article class="deploy-card deploy-railway">
+            <div class="deploy-logo">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <h3>Railway</h3>
+            <p class="deploy-tag">Backend · APIs, databases, background jobs</p>
+            <p>Deploy servers, workers, and Postgres databases without touching AWS. Feels like Vercel, but for the backend half of your app.</p>
+            <div class="deploy-when">
+              <div class="deploy-when-label">Use it when</div>
+              <div>You need to run Python or Node code on a server — an API, a cron job, a Discord bot, anything that isn't a static website.</div>
+            </div>
+            <div class="deploy-how">
+              <div class="step">①<span>New project → Deploy from repo</span></div>
+              <div class="step">②<span>Set env vars</span></div>
+              <div class="step">③<span>Railway gives you a live API URL</span></div>
+            </div>
+          </article>
+
+          <article class="deploy-card deploy-supabase">
+            <div class="deploy-logo">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <h3>Supabase</h3>
+            <p class="deploy-tag">Database + Auth + Storage</p>
+            <p>An open-source Firebase. A Postgres database, user authentication, and file storage — with a friendly dashboard and a one-line JavaScript client.</p>
+            <div class="deploy-when">
+              <div class="deploy-when-label">Use it when</div>
+              <div>You want users, login, and persistent data — without writing a backend at all.</div>
+            </div>
+            <div class="deploy-how">
+              <div class="step">①<span>Create a project</span></div>
+              <div class="step">②<span>Copy your project URL + anon key</span></div>
+              <div class="step">③<span>Drop the client into your React app</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="stack-picker">
+          <div class="stack-picker-title">A sensible default stack</div>
+          <div class="stack-flow">
+            <div class="stack-pill stack-pill-blue">Vite + React</div>
+            <span class="stack-plus">+</span>
+            <div class="stack-pill stack-pill-cyan">Supabase</div>
+            <span class="stack-plus">+</span>
+            <div class="stack-pill stack-pill-violet">Vercel</div>
+            <span class="stack-equals">=</span>
+            <div class="stack-result">A real, production-ready app. No backend code required.</div>
+          </div>
+        </div>
+
+        <div class="tips-panel" style="margin-top: 36px;">
+          <div class="tips-head">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <h3>"But which one do I use for my app?"</h3>
+          </div>
+          <ul class="tips-list">
+            <li><strong>Just a website?</strong> Vercel is all you need.</li>
+            <li><strong>Website + user logins + saved data?</strong> Vercel + Supabase.</li>
+            <li><strong>Something that runs in the background</strong> (emails, cron jobs, AI pipelines)? Add Railway.</li>
+            <li><strong>Enterprise or weird networking needs?</strong> AWS or GCP — but don't start there on day one.</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <div class="page-nav">
+      <a class="page-nav-link prev" href="claude.html">
+        <span class="pn-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Previous
+        </span>
+        <span class="pn-title">03 · Claude Code setup</span>
+      </a>
+      <a class="page-nav-link next" href="workshop.html">
+        <span class="pn-label">
+          Up next
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+        <span class="pn-title">05 · Build your first app</span>
+      </a>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-row">
+          <div class="brand">
+            <div class="brand-mark">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="brand-text">
+              <div class="brand-title">Zero to App</div>
+              <div class="brand-sub">A workshop for humans who ship</div>
+            </div>
+          </div>
+          <div class="footer-meta-line">Built with care · No cookies · No tracking</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
